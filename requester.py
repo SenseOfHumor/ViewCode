@@ -4,6 +4,12 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import plotly.subplots as sp
 
+class InvalidUsernameError(Exception):
+    """Exception raised for invalid usernames or no data found for a user."""
+
+    def __init__(self, message):
+        self.message = message
+        super().__init__(message)
 class LeetcodeRequester:
     
     def __init__(self):
@@ -37,29 +43,32 @@ class LeetcodeRequester:
 
         data = {"query": query}
 
-        response = requests.post(url, headers=headers, json=data)
+        try:
+            response = requests.post(url, headers=headers, json=data)
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as err:
+            raise InvalidUsernameError(f"Invalid username or API request failed. Error: {err}")
 
-        if response.status_code == 200:
-            result = response.json()
+        result = response.json()
 
-            # Extracting relevant data from the response
-            ac_submission_data = result.get("data", {}).get("matchedUser", {}).get("submitStats", {}).get("acSubmissionNum", [])
+        # Check if the expected structure is present in the response
+        matched_user = result.get("data", {}).get("matchedUser")
+        if not matched_user:
+            raise InvalidUsernameError(f"Invalid username or no data found for the user: {username}")
 
-            # Organizing the data into a dictionary
-            for submission_info in ac_submission_data:
-                difficulty = submission_info.get("difficulty")
-                count = submission_info.get("count")
-                submissions = submission_info.get("submissions")
-                
-                # Adding metrics to the dictionary, excluding 'All'
-                if difficulty != 'All':
-                    self.metrics_map[difficulty] = {"count": count, "submissions": submissions}
+        submit_stats = matched_user.get("submitStats", {}).get("acSubmissionNum", [])
 
-            print(self.metrics_map)
+        # Organizing the data into a dictionary
+        for submission_info in submit_stats:
+            difficulty = submission_info.get("difficulty")
+            count = submission_info.get("count")
+            submissions = submission_info.get("submissions")
 
-        else:
-            print(f"Error: {response.status_code}")
-            print(response.text)
+            # Adding metrics to the dictionary, excluding 'All'
+            if difficulty != 'All':
+                self.metrics_map[difficulty] = {"count": count, "submissions": submissions}
+
+        print(self.metrics_map)
 
         return self.metrics_map
 

@@ -65,8 +65,8 @@ class LeetcodeRequester:
             submissions = submission_info.get("submissions")
 
             # Adding metrics to the dictionary, excluding 'All'
-            if difficulty != 'All':
-                self.metrics_map[difficulty] = {"count": count, "submissions": submissions}
+            #if difficulty != 'All':
+            self.metrics_map[difficulty] = {"count": count, "submissions": submissions}
 
         print(self.metrics_map)
 

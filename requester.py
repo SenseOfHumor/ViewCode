@@ -161,15 +161,18 @@ class LeetcodeRequester:
 
         # Update layout to make the scatter plot uninteractive
         fig.update_layout(
-            title='Leetcode Submission Metrics (Scatter Plot)',
+            #title='Leetcode Submission Metrics (Scatter Plot)',
             xaxis_title='Difficulty',
             yaxis_title='Count',
             height=500,  # Adjust the height
-            width=380,   # Adjust the width
-            hovermode=False  # Disable hover interactions
+            width=350,   # Adjust the width
         )
 
+        # Disable hover interactions
+        fig.update_layout(hovermode=False)
+
         return fig
+
 
 
 

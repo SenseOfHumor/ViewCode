@@ -84,9 +84,7 @@ class LeetcodeRequester:
 
         # Update layout
         fig.update_layout(
-            title='Leetcode Metrics 📈',
-            height=600,  # Adjust the height
-            width=400,   # Adjust the width)
+            title='Leetcode Metrics 📈'  # Adjust the width)
         )
         return fig
 
@@ -142,10 +140,15 @@ class LeetcodeRequester:
           #title='Leetcode Submission Metrics (Count)',
           height=300,  # Adjust the height
           width=300,   # Adjust the width
-          margin=dict(l=20, r=20, t=20, b=20),  # Adjust the margins (left, right, top, bottom)
-          paper_bgcolor='rgba(0,0,0,0)',  # Make the background transparent
-          plot_bgcolor='rgba(0,0,0,0)',   # Make the plot area background transparent
-          yaxis=dict(domain=[0.15, 1])
+        #   margin=dict(l=20, r=20, t=20, b=20),  # Adjust the margins (left, right, top, bottom)
+        #   paper_bgcolor='rgba(0,0,0,0)',  # Make the background transparent
+        #   plot_bgcolor='rgba(0,0,0,0)',   # Make the plot area background transparent
+        # Adjust the y-axis position
+        yaxis=dict(
+            showticklabels=False,
+            showgrid=False,
+            zeroline=False,
+        ),
       )
 
       return fig

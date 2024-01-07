@@ -140,8 +140,8 @@ class LeetcodeRequester:
       fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=0.7)])
       fig.update_layout(
           #title='Leetcode Submission Metrics (Count)',
-          height=400,  # Adjust the height
-          width=500,   # Adjust the width
+          height=300,  # Adjust the height
+          width=300,   # Adjust the width
           margin=dict(l=20, r=20, t=20, b=20),  # Adjust the margins (left, right, top, bottom)
           paper_bgcolor='rgba(0,0,0,0)',  # Make the background transparent
           plot_bgcolor='rgba(0,0,0,0)',   # Make the plot area background transparent
@@ -164,8 +164,8 @@ class LeetcodeRequester:
             #title='Leetcode Submission Metrics (Scatter Plot)',
             xaxis_title='Difficulty',
             yaxis_title='Count',
-            height=500,  # Adjust the height
-            width=350,   # Adjust the width
+            height=400,  # Adjust the height
+            width=300,   # Adjust the width
         )
 
         # Disable hover interactions

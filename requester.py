@@ -84,7 +84,9 @@ class LeetcodeRequester:
 
         # Update layout
         fig.update_layout(
-            title='Leetcode Metrics 📈'  # Adjust the width)
+            title='Leetcode Metrics 📈',
+            height=600,  # Adjust the height
+            width=400,   # Adjust the width)
         )
         return fig
 

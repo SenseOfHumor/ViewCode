@@ -85,8 +85,8 @@ class LeetcodeRequester:
         # Update layout
         fig.update_layout(
             title='Leetcode Metrics 📈',
-            height=500,  # Adjust the height
-            width=250,   # Adjust the width)
+            height=800,  # Adjust the height
+            width=600,   # Adjust the width)
         )
         return fig
 
@@ -164,8 +164,8 @@ class LeetcodeRequester:
             title='Leetcode Submission Metrics (Scatter Plot)',
             xaxis_title='Difficulty',
             yaxis_title='Count',
-            height=600,  # Adjust the height
-            width=500,   # Adjust the width
+            height=500,  # Adjust the height
+            width=400,   # Adjust the width
         )
 
         return fig

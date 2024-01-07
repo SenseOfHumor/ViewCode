@@ -1,7 +1,7 @@
 import streamlit as st
 from requester import LeetcodeRequester, InvalidUsernameError
 
-st.header("Leetcode Lookup 🚀")
+st.title("Leetcode Lookup 🚀")
 
 # Get the username from the text input field
 username = st.text_input("Enter the **LeetCode Username** 🤖")

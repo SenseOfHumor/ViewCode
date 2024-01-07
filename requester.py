@@ -159,16 +159,20 @@ class LeetcodeRequester:
         # Creating scatter plot
         fig = go.Figure(data=go.Scatter(x=difficulties, y=counts, mode='markers', text=counts))
 
-        # Update layout with the desired size
+        # Update layout to make the scatter plot uninteractive
         fig.update_layout(
             title='Leetcode Submission Metrics (Scatter Plot)',
             xaxis_title='Difficulty',
             yaxis_title='Count',
             height=500,  # Adjust the height
-            width=400,   # Adjust the width
+            width=380,   # Adjust the width
+            hovermode=False  # Disable hover interactions
         )
 
         return fig
+
+
+
 
 
     def generate_word_cloud(self):

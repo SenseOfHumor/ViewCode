@@ -83,8 +83,11 @@ class LeetcodeRequester:
         )])
 
         # Update layout
-        fig.update_layout(title='Leetcode Metrics 📈')
-
+        fig.update_layout(
+            title='Leetcode Metrics 📈',
+            height=500,  # Adjust the height
+            width=250,   # Adjust the width)
+        )
         return fig
 
         
@@ -153,10 +156,20 @@ class LeetcodeRequester:
         difficulties = list(self.metrics_map.keys())
         counts = [metrics['count'] for metrics in self.metrics_map.values()]
 
+        # Creating scatter plot
         fig = go.Figure(data=go.Scatter(x=difficulties, y=counts, mode='markers', text=counts))
-        #fig.update_layout(title='Leetcode Submission Metrics (Count)')
-        
+
+        # Update layout with the desired size
+        fig.update_layout(
+            title='Leetcode Submission Metrics (Scatter Plot)',
+            xaxis_title='Difficulty',
+            yaxis_title='Count',
+            height=600,  # Adjust the height
+            width=500,   # Adjust the width
+        )
+
         return fig
+
 
     def generate_word_cloud(self):
         text = ' '.join([' '.join([difficulty] * metrics['count']) for difficulty, metrics in self.metrics_map.items()])

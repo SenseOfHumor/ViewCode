@@ -86,8 +86,8 @@ class LeetcodeRequester:
         # Update layout
         fig.update_layout(
             title='Leetcode Metrics 📈',
-            height=600,  # Adjust the height
-            width=400,   # Adjust the width)
+            # height=600,  # Adjust the height
+            # width=400,   # Adjust the width)
         )
         return fig
 
@@ -160,7 +160,7 @@ class LeetcodeRequester:
 
     def generate_scatter_plot(self):
         difficulties = list(self.metrics_map.keys())
-        counts = [metrics['count'] for metrics in self.metrics_map.values()]
+        counts = [metrics['submissions'] for metrics in self.metrics_map.values()]
 
         # Creating scatter plot
         fig = go.Figure(data=go.Scatter(x=difficulties, y=counts, mode='markers', text=counts))
@@ -169,9 +169,9 @@ class LeetcodeRequester:
         fig.update_layout(
             #title='Leetcode Submission Metrics (Scatter Plot)',
             xaxis_title='Difficulty',
-            yaxis_title='Count',
-            height=400,  # Adjust the height
-            width=300,   # Adjust the width
+            yaxis_title='Submissions',
+            # height=400,  # Adjust the height
+            # width=300,   # Adjust the width
         )
 
         # Disable hover interactions

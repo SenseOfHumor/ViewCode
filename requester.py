@@ -3,6 +3,7 @@ import plotly.graph_objects as go
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import plotly.subplots as sp
+import plotly.express as px
 
 class InvalidUsernameError(Exception):
     """Exception raised for invalid usernames or no data found for a user."""
@@ -155,7 +156,7 @@ class LeetcodeRequester:
 
       return fig
 
-
+    
 
     def generate_scatter_plot(self):
         difficulties = list(self.metrics_map.keys())
@@ -183,13 +184,22 @@ class LeetcodeRequester:
 
 
 
-    def generate_word_cloud(self):
-        text = ' '.join([' '.join([difficulty] * metrics['count']) for difficulty, metrics in self.metrics_map.items()])
+    
 
-        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+    # def generate_nightingale_rose_diagram(self):
+    #     values = [metrics['count'] for metrics in self.metrics_map.values()]
+    #     difficulties = list(self.metrics_map.keys())
 
-        plt.figure(figsize=(10, 5))
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis('off')
-        plt.title('Leetcode Submission Metrics (Count)')
-        plt.show()
+    #     fig = go.Figure(data=[go.Pie(labels=difficulties, values=values, hole=0.4)])
+
+    #     fig.update_traces(hoverinfo='label+percent', textinfo='value', textfont_size=12,
+    #                       marker=dict(colors=px.colors.sequential.RdBu))
+
+    #     fig.update_layout(
+    #         title_text="Leetcode Submission Metrics (Rose Chart)",
+    #         annotations=[dict(text='Count', x=0.5, y=0.5, font_size=20, showarrow=False)]
+    #     )
+
+    #     return fig
+
+           

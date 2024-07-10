@@ -28,7 +28,7 @@ if st.button("Submit"):
             # st.write(leetcode_requester.generate_donut_chart())
             # # st.write(leetcode_requester.generate_word_cloud())
             st.write(leetcode_requester.generate_scatter_plot())
-            # # st.write(leetcode_requester.generate_nightingale_rose_diagram())
+            st.write(leetcode_requester.generate_nightingale_rose_diagram())
             st.write(leetcode_requester.generate_donut_chart())
 
         except InvalidUsernameError as e:

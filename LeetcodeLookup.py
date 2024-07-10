@@ -23,12 +23,12 @@ if st.button("Submit"):
 
             # # Uncomment the following lines if you want to display additional charts
             # st.markdown("---")
-            # st.write(leetcode_requester.generate_horizontal_bar_chart())
+            st.write(leetcode_requester.generate_horizontal_bar_chart())
             # st.write(leetcode_requester.generate_pie_chart())
             # st.write(leetcode_requester.generate_donut_chart())
             # # st.write(leetcode_requester.generate_word_cloud())
             st.write(leetcode_requester.generate_scatter_plot())
-            st.write(leetcode_requester.generate_nightingale_rose_diagram())
+            ## st.write(leetcode_requester.generate_nightingale_rose_diagram())
             st.write(leetcode_requester.generate_donut_chart())
 
         except InvalidUsernameError as e:
